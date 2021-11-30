@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>
+    <p class="text-lg font-bold text-gray-800">Add Company Staff for CASTORAMA France SAS</p>
+</h1>
+
+<div mat-dialog-content class="p-8 font-display">
+    <form [formGroup]="form" class="container grid grid-cols-3 gap-x-8 gap-y-6">
+        <div class="flex items-center justify-end">
+            <p class="font-display text-gray-900 text-sm font-medium">Civility</p>
+        </div>
+        <div class="col-span-2">
+            <mat-radio-group formControlName="civility" class="text-xs flex space-x-4">
+                <mat-radio-button [value]="'MR'" class="font-display">MR</mat-radio-button>
+                <mat-radio-button [value]="'MRS'" class="font-display">MRS</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="flex items-center justify-end">
+            <p class="font-display text-gray-900 text-sm font-medium">First Name</p>
+        </div>
+        <div class="col-span-2">
+            <input formControlName="first_name" type="text" class="w-full text-xs bg-gray-100 rounded-md text-gray-900 border-0" placeholder="Enter first name">
+        </div>
+        <div class="flex items-center justify-end">
+            <p class="font-display text-gray-900 text-sm font-medium">Last Name</p>
+        </div>
+        <div class="col-span-2">
+            <input formControlName="last_name" type="text" class="w-full text-xs bg-gray-100 rounded-md text-gray-900 border-0" placeholder="Enter last name">
+        </div>
+        <div class="flex items-center justify-end">
+            <p class="font-display text-gray-900 text-sm font-medium">Email</p>
+        </div>
+        <div class="col-span-2">
+            <input formControlName="email" type="text" class="w-full text-xs bg-gray-100 rounded-md text-gray-900 border-0" placeholder="Enter email">
+        </div>
+        
+    </form>
+</div>
+
+<div mat-dialog-actions>
+    <div class="flex items-center justify-end px-8">
+        <button (click)="cancel()" class="py-3 px-4 font-display border border-blue-900 text-blue-900 text-xs font-medium rounded-md">Batalkan</button>
+        <button (click)="save()" class="py-3 px-4 font-display text-white border border-blue-900 bg-blue-900 text-xs font-medium rounded-md ml-2" [disabled]="form.invalid" [ngClass]="{'bg-gray-200 text-gray-400 cursor-not-allowed': form.invalid, 'bg-blue-900 hover:bg-blue-800 text-white ': !form.invalid}">Simpan</button>
+    </div>
+</div>

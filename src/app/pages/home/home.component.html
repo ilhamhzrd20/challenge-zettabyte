@@ -1,0 +1,47 @@
+<section class="w-screen bg-gray-100 p-8">
+    <div class="flex justify-end w-full">
+        <button (click)="add()" class="py-2 px-3 bg-blue-900 text-white font-semibold text-sm rounded-md">Add a Company Staff</button>
+    </div>
+    <div class="bg-white rounded-md p-4 shadow-md mt-4">
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let data"> {{data.civility}}. {{data.first_name}} {{data.last_name}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef> User Type </th>
+              <td mat-cell *matCellDef="let data"> {{data.company?.user_type}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="entity">
+              <th mat-header-cell *matHeaderCellDef> Symbol </th>
+              <td mat-cell *matCellDef="let data"> {{data.company?.name}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let data" class="text-lg">
+                    <i *ngIf="data.user_status == 'pending'" class="fas fa-check-circle text-black"></i>
+                    <i *ngIf="data.user_status == 'active'" class="fas fa-check-circle text-green-500"></i>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let data" class="whitespace-nowrap">
+                    <div class="flex flex-row space-x-2">
+                        <button class="h-8 w-8 text-xs flex items-center justify-center rounded-full bg-blue-100 text-blue-900"><i class="fas fa-pencil-alt"></i></button>
+                        <button class="h-8 w-8 text-xs flex items-center justify-center rounded-full bg-red-100 text-red-900"><i class="fas fa-times"></i></button>    
+                    </div>
+                    </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+
+</section>
+
